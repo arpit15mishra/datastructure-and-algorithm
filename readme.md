@@ -1,0 +1,1 @@
+this repository contains common algorithm and datastructure used in our day to day life.

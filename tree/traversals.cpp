@@ -14,6 +14,32 @@ void PreOrder(struct BinaryTreeNode *root){
         PreOrder(root->right);
     }
 }
+
+void InOrder(struct BinaryTreeNode *root){
+    if(root){
+        InOrder(root->left);
+        cout<<root->data<<" ";
+        InOrder(root->right);
+    }
+}
+
+void LevelOrder(struct BinaryTreeNode *root){
+    struct BinaryTreeNode *temp;
+    queue<struct BinaryTreeNode*> Q;
+    if(!root) return;
+    Q.push(root);
+
+    while(!Q.empty()){
+        temp = Q.front();
+        Q.pop();
+        cout<<temp->data<<" ";
+        if(temp->left) Q.push(temp->left);
+        if(temp->right) Q.push(temp->right);
+    }
+}
+
+
+
 struct BinaryTreeNode* insert(struct BinaryTreeNode *root,int data){
     queue<struct BinaryTreeNode*> Q;
     struct BinaryTreeNode *temp;
@@ -64,7 +90,14 @@ int main(){
         cin>>a;
     root = insert(root,a);
     }
+    cout<<"pre- order traversal of the tree is :";
     PreOrder(root);
+    cout<<endl;
+    cout<<"In-order traversal of the tree is :";
+    InOrder(root);
+    cout<<endl;
+    cout<<"level order traversal of the tree is :";
+    LevelOrder(root);
 
     return 0;
 
